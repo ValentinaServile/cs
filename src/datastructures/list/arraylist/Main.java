@@ -1,4 +1,4 @@
-package datastructures.arraylist;
+package datastructures.list.arraylist;
 
 public class Main {
 

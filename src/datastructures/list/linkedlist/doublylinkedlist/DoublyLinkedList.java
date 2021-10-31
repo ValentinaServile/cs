@@ -1,4 +1,4 @@
-package datastructures.linkedlist.doublylinkedlist;
+package datastructures.list.linkedlist.doublylinkedlist;
 
 
 import java.util.ArrayList;

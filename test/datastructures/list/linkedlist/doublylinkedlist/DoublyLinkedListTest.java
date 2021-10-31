@@ -1,18 +1,18 @@
-package datastructures.arraylist;
+package datastructures.list.linkedlist.doublylinkedlist;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ArrayListTest {
+class DoublyLinkedListTest {
 
     @Nested
     class Add {
 
         @Test
         void addsElementsAtTheEnd() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -29,7 +29,7 @@ class ArrayListTest {
 
         @Test
         void allowsInsertingAtEnd() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -44,7 +44,7 @@ class ArrayListTest {
 
         @Test
         void allowsInsertingAtBeginning() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -59,7 +59,7 @@ class ArrayListTest {
 
         @Test
         void doesNotAllowToInsertPastEnd() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -70,7 +70,7 @@ class ArrayListTest {
 
         @Test
         void shiftsAllElementsToMakeRoomForNewOne() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -89,7 +89,7 @@ class ArrayListTest {
 
         @Test
         void returnsCurrentSize() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -104,7 +104,7 @@ class ArrayListTest {
 
         @Test
         void doesNotAllowToAccessNegativeIndexes() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -115,7 +115,7 @@ class ArrayListTest {
 
         @Test
         void doesNotAllowAccessToIndexesPastTheEnd() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -126,7 +126,7 @@ class ArrayListTest {
 
         @Test
         void returnsRequestedElementWhenIndexExists() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -141,7 +141,7 @@ class ArrayListTest {
 
         @Test
         void doesNothingWhenElementToRemoveDoesNotExist() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -156,7 +156,7 @@ class ArrayListTest {
 
         @Test
         void allowsRemovingFirstElement() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("removeMe");
             list.add("first");
@@ -172,7 +172,7 @@ class ArrayListTest {
 
         @Test
         void allowsRemovingLastElement() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -190,7 +190,7 @@ class ArrayListTest {
 
         @Test
         void removesFirstOccurrenceOfElementShiftingAllOthersToCoverGap() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("removeMe");
@@ -212,7 +212,7 @@ class ArrayListTest {
 
         @Test
         void doesNotAllowRemovingNegativeIndexes() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -223,7 +223,7 @@ class ArrayListTest {
 
         @Test
         void doesNotAllowRemovingIndexesPastTheEnd() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -234,7 +234,7 @@ class ArrayListTest {
 
         @Test
         void allowsRemovingElementAtBeginning() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("removeMe");
             list.add("first");
@@ -249,7 +249,7 @@ class ArrayListTest {
 
         @Test
         void allowsRemovingElementAtEnd() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -265,7 +265,7 @@ class ArrayListTest {
 
         @Test
         void removesElementShiftingAllOthersToCoverGap() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("removeMe");
@@ -284,7 +284,7 @@ class ArrayListTest {
 
         @Test
         void returnsNegativeOneWhenElementDoesNotExist() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -295,7 +295,7 @@ class ArrayListTest {
 
         @Test
         void returnsIndexOfFirstOccurrenceOfElementWhenItExist() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -311,7 +311,7 @@ class ArrayListTest {
 
         @Test
         void returnsFalseWhenElementDoesNotExist() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -322,7 +322,7 @@ class ArrayListTest {
 
         @Test
         void returnsTrueWhenElementExists() {
-            ArrayList list = new ArrayList();
+            DoublyLinkedList list = new DoublyLinkedList();
 
             list.add("first");
             list.add("second");

@@ -1,18 +1,18 @@
-package datastructures.linkedlist.doublylinkedlist;
+package datastructures.list.linkedlist.singlylinkedlist;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DoublyLinkedListTest {
+class SinglyLinkedListTest {
 
     @Nested
     class Add {
 
         @Test
         void addsElementsAtTheEnd() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -29,7 +29,7 @@ class DoublyLinkedListTest {
 
         @Test
         void allowsInsertingAtEnd() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -44,7 +44,7 @@ class DoublyLinkedListTest {
 
         @Test
         void allowsInsertingAtBeginning() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -59,7 +59,7 @@ class DoublyLinkedListTest {
 
         @Test
         void doesNotAllowToInsertPastEnd() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -70,7 +70,7 @@ class DoublyLinkedListTest {
 
         @Test
         void shiftsAllElementsToMakeRoomForNewOne() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -89,7 +89,7 @@ class DoublyLinkedListTest {
 
         @Test
         void returnsCurrentSize() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -104,7 +104,7 @@ class DoublyLinkedListTest {
 
         @Test
         void doesNotAllowToAccessNegativeIndexes() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -115,7 +115,7 @@ class DoublyLinkedListTest {
 
         @Test
         void doesNotAllowAccessToIndexesPastTheEnd() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -126,7 +126,7 @@ class DoublyLinkedListTest {
 
         @Test
         void returnsRequestedElementWhenIndexExists() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -141,7 +141,7 @@ class DoublyLinkedListTest {
 
         @Test
         void doesNothingWhenElementToRemoveDoesNotExist() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -156,7 +156,7 @@ class DoublyLinkedListTest {
 
         @Test
         void allowsRemovingFirstElement() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("removeMe");
             list.add("first");
@@ -172,7 +172,7 @@ class DoublyLinkedListTest {
 
         @Test
         void allowsRemovingLastElement() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -190,7 +190,7 @@ class DoublyLinkedListTest {
 
         @Test
         void removesFirstOccurrenceOfElementShiftingAllOthersToCoverGap() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("removeMe");
@@ -212,7 +212,7 @@ class DoublyLinkedListTest {
 
         @Test
         void doesNotAllowRemovingNegativeIndexes() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -223,7 +223,7 @@ class DoublyLinkedListTest {
 
         @Test
         void doesNotAllowRemovingIndexesPastTheEnd() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -234,7 +234,7 @@ class DoublyLinkedListTest {
 
         @Test
         void allowsRemovingElementAtBeginning() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("removeMe");
             list.add("first");
@@ -249,7 +249,7 @@ class DoublyLinkedListTest {
 
         @Test
         void allowsRemovingElementAtEnd() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -265,7 +265,7 @@ class DoublyLinkedListTest {
 
         @Test
         void removesElementShiftingAllOthersToCoverGap() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("removeMe");
@@ -284,7 +284,7 @@ class DoublyLinkedListTest {
 
         @Test
         void returnsNegativeOneWhenElementDoesNotExist() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -295,7 +295,7 @@ class DoublyLinkedListTest {
 
         @Test
         void returnsIndexOfFirstOccurrenceOfElementWhenItExist() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -311,7 +311,7 @@ class DoublyLinkedListTest {
 
         @Test
         void returnsFalseWhenElementDoesNotExist() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");
@@ -322,7 +322,7 @@ class DoublyLinkedListTest {
 
         @Test
         void returnsTrueWhenElementExists() {
-            DoublyLinkedList list = new DoublyLinkedList();
+            SinglyLinkedList list = new SinglyLinkedList();
 
             list.add("first");
             list.add("second");

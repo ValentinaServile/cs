@@ -1,18 +1,18 @@
-package datastructures.linkedlist.singlylinkedlist;
+package datastructures.list.arraylist;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SinglyLinkedListTest {
+class ArrayListTest {
 
     @Nested
     class Add {
 
         @Test
         void addsElementsAtTheEnd() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -29,7 +29,7 @@ class SinglyLinkedListTest {
 
         @Test
         void allowsInsertingAtEnd() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -44,7 +44,7 @@ class SinglyLinkedListTest {
 
         @Test
         void allowsInsertingAtBeginning() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -59,7 +59,7 @@ class SinglyLinkedListTest {
 
         @Test
         void doesNotAllowToInsertPastEnd() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -70,7 +70,7 @@ class SinglyLinkedListTest {
 
         @Test
         void shiftsAllElementsToMakeRoomForNewOne() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -89,7 +89,7 @@ class SinglyLinkedListTest {
 
         @Test
         void returnsCurrentSize() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -104,7 +104,7 @@ class SinglyLinkedListTest {
 
         @Test
         void doesNotAllowToAccessNegativeIndexes() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -115,7 +115,7 @@ class SinglyLinkedListTest {
 
         @Test
         void doesNotAllowAccessToIndexesPastTheEnd() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -126,7 +126,7 @@ class SinglyLinkedListTest {
 
         @Test
         void returnsRequestedElementWhenIndexExists() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -141,7 +141,7 @@ class SinglyLinkedListTest {
 
         @Test
         void doesNothingWhenElementToRemoveDoesNotExist() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -156,7 +156,7 @@ class SinglyLinkedListTest {
 
         @Test
         void allowsRemovingFirstElement() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("removeMe");
             list.add("first");
@@ -172,7 +172,7 @@ class SinglyLinkedListTest {
 
         @Test
         void allowsRemovingLastElement() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -190,7 +190,7 @@ class SinglyLinkedListTest {
 
         @Test
         void removesFirstOccurrenceOfElementShiftingAllOthersToCoverGap() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("removeMe");
@@ -212,7 +212,7 @@ class SinglyLinkedListTest {
 
         @Test
         void doesNotAllowRemovingNegativeIndexes() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -223,7 +223,7 @@ class SinglyLinkedListTest {
 
         @Test
         void doesNotAllowRemovingIndexesPastTheEnd() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -234,7 +234,7 @@ class SinglyLinkedListTest {
 
         @Test
         void allowsRemovingElementAtBeginning() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("removeMe");
             list.add("first");
@@ -249,7 +249,7 @@ class SinglyLinkedListTest {
 
         @Test
         void allowsRemovingElementAtEnd() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -265,7 +265,7 @@ class SinglyLinkedListTest {
 
         @Test
         void removesElementShiftingAllOthersToCoverGap() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("removeMe");
@@ -284,7 +284,7 @@ class SinglyLinkedListTest {
 
         @Test
         void returnsNegativeOneWhenElementDoesNotExist() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -295,7 +295,7 @@ class SinglyLinkedListTest {
 
         @Test
         void returnsIndexOfFirstOccurrenceOfElementWhenItExist() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -311,7 +311,7 @@ class SinglyLinkedListTest {
 
         @Test
         void returnsFalseWhenElementDoesNotExist() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
@@ -322,7 +322,7 @@ class SinglyLinkedListTest {
 
         @Test
         void returnsTrueWhenElementExists() {
-            SinglyLinkedList list = new SinglyLinkedList();
+            ArrayList list = new ArrayList();
 
             list.add("first");
             list.add("second");
