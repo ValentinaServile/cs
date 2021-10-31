@@ -1,12 +1,12 @@
-package algorithms.sorting.mergesort;
+package algorithms.sorting.selectionsort;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-class MergeSortTest {
+class SelectionSortTest {
 
-    MergeSort sorter = new MergeSort();
+    SelectionSort sorter = new SelectionSort();
 
     @Test
     void doesNothingToEmptyArray() {
