@@ -1,16 +1,16 @@
-package datastructures.stack;
+package datastructures.queue;
 
 import java.util.LinkedList;
 
-public class Stack {
+public class Queue {
 
     private final LinkedList<String> backingLinkedList = new LinkedList<>();
 
-    public void push(String element) {
-        backingLinkedList.addFirst(element);
+    public void enqueue(String element) {
+        backingLinkedList.addLast(element);
     }
 
-    public String pop() {
+    public String dequeue() {
         return backingLinkedList.pop();
     }
 
