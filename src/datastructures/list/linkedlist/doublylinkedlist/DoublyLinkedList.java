@@ -10,23 +10,28 @@ public class DoublyLinkedList {
     private Node tail;
     private int size;
 
+    //Complexity: O(1)
     public int size() {
         return size;
     }
 
+    //Complexity: O(n)
     public String get(int index) {
         return nodeAt(index).getElement();
     }
 
+    //Complexity: O(n)
     public boolean contains(String element) {
         return indexOf(element) != -1;
     }
 
+    //Complexity: O(1)
     public void add(String element) {
         Node toAdd = new Node(element);
         linkLast(toAdd);
     }
 
+    //Complexity: O(n)
     public void add(String element, int index) {
         Node toAdd = new Node(element);
         if (index == size) {
@@ -39,6 +44,7 @@ public class DoublyLinkedList {
         }
     }
 
+    //Complexity: O(n)
     public void remove(int index) {
         if (index == 0) {
             unlinkFirst();
@@ -50,6 +56,7 @@ public class DoublyLinkedList {
         }
     }
 
+    //Complexity: O(n)
     public void remove(String element) {
         int currentIndex = 0;
         Node currentNode = head;
@@ -70,6 +77,7 @@ public class DoublyLinkedList {
         }
     }
 
+    //Complexity: O(n)
     public int indexOf(String element) {
         int currentIndex = 0;
         Node currentNode = head;

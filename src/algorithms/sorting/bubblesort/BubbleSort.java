@@ -2,6 +2,7 @@ package algorithms.sorting.bubblesort;
 
 public class BubbleSort {
 
+    //Complexity: O(n^2)
     public void sort(Integer[] input) {
 
         for (int lastUnsortedIndex = input.length - 1; lastUnsortedIndex > 0; lastUnsortedIndex--) {

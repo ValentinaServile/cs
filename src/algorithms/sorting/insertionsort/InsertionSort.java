@@ -2,6 +2,7 @@ package algorithms.sorting.insertionsort;
 
 public class InsertionSort {
 
+    //Complexity: O(n^2)
     public void sort(Integer[] input) {
 
         for (int firstUnsortedIndex = 1; firstUnsortedIndex < input.length; firstUnsortedIndex++) {

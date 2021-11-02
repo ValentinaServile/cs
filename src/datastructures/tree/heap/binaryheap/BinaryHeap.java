@@ -15,10 +15,12 @@ public class BinaryHeap {
         size = 0;
     }
 
+    //Complexity: O(1)
     public Integer peek() {
         return backingArrayList.get(0);
     }
 
+    //Complexity: O(log(n))
     public void add(Integer element) {
         backingArrayList.add(element);
         addToBackingHashmap(element, size);
@@ -26,12 +28,14 @@ public class BinaryHeap {
         bubbleUp(size - 1);
     }
 
+    //Complexity: O(log(n))
     public Integer poll() {
         Integer result = backingArrayList.get(0);
         removeAt(0);
         return result;
     }
 
+    //Complexity: O(log(n))
     public void remove(Integer element) {
         int elementIndex = indexOf(element);
         if (elementIndex == -1) {
@@ -40,7 +44,8 @@ public class BinaryHeap {
         removeAt(elementIndex);
     }
 
-    public boolean contains (Integer element) {
+    //Complexity: O(1)
+    public boolean contains(Integer element) {
         return indexOf(element) != -1;
     }
 

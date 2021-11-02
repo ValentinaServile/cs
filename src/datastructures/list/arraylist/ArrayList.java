@@ -16,14 +16,17 @@ public class ArrayList {
         backingArray = new String[initialCapacity];
     }
 
+    //Complexity: O(1)
     public int size() {
         return nextEmptyIndex;
     }
 
+    //Complexity: O(1)
     public String get(int index) {
         return backingArray[index];
     }
 
+    //Complexity: O(1)
     public void add(String element) {
         if (nextEmptyIndex == backingArray.length) {
             doubleBackingArraySize();
@@ -33,6 +36,7 @@ public class ArrayList {
         nextEmptyIndex += 1;
     }
 
+    //Complexity: O(n)
     public void add(String element, int index) {
         if (nextEmptyIndex == backingArray.length) {
             doubleBackingArraySize();
@@ -42,6 +46,7 @@ public class ArrayList {
         backingArray[index] = element;
     }
 
+    //Complexity: O(n)
     public void remove(int index) {
         if (index >= nextEmptyIndex) {
             throw new IndexOutOfBoundsException();
@@ -52,6 +57,7 @@ public class ArrayList {
         nextEmptyIndex--;
     }
 
+    //Complexity: O(n)
     public void remove(String element) {
         int index = indexOf(element);
         if (index == -1) {
@@ -60,6 +66,7 @@ public class ArrayList {
         remove(index);
     }
 
+    //Complexity: O(n)
     public int indexOf(String element) {
         for (int i = 0; i < backingArray.length; i++) {
             if (element.equals(backingArray[i])) {
@@ -69,6 +76,7 @@ public class ArrayList {
         return -1;
     }
 
+    //Complexity: O(n)
     public boolean contains (String element) {
         return indexOf(element) != -1;
     }

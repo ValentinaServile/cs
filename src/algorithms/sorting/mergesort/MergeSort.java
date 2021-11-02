@@ -2,6 +2,7 @@ package algorithms.sorting.mergesort;
 
 public class MergeSort {
 
+    //Complexity: O(n log(n))
     public void sort(Integer[] input) {
         sort(input, 0, input.length - 1);
     }

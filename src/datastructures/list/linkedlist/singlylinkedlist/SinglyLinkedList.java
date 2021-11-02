@@ -13,14 +13,17 @@ public class SinglyLinkedList {
         size = 0;
     }
 
+    //Complexity: O(1)
     public int size() {
         return size;
     }
 
+    //Complexity: O(n)
     public String get(int index) {
         return nodeAt(index).getElement();
     }
 
+    //Complexity: O(n)
     public void add(String element) {
         Node node = new Node(element);
         if (head == null) {
@@ -30,6 +33,7 @@ public class SinglyLinkedList {
         link(node, size);
     }
 
+    //Complexity: O(n)
     public void add(String element, int index) {
         Node toAdd = new Node(element);
         if (index == 0) {
@@ -39,6 +43,7 @@ public class SinglyLinkedList {
         }
     }
 
+    //Complexity: O(n)
     public void remove(String element) {
         if (head == null) {
             return;
@@ -62,6 +67,7 @@ public class SinglyLinkedList {
 
     }
 
+    //Complexity: O(n)
     public void remove(int index) {
         if (index == 0) {
             unlinkFirst();
