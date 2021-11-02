@@ -25,6 +25,26 @@ class ArrayListTest {
     }
 
     @Nested
+    class AddFirst {
+
+        @Test
+        void allowsInsertingAtBeginning() {
+            ArrayList list = new ArrayList();
+
+            list.add("first");
+            list.add("second");
+            list.add("third");
+            list.addFirst("zeroeth");
+
+            assertEquals(list.get(0), "zeroeth");
+            assertEquals(list.get(1), "first");
+            assertEquals(list.get(2), "second");
+            assertEquals(list.get(3), "third");
+        }
+
+    }
+
+    @Nested
     class AddAtIndex {
 
         @Test

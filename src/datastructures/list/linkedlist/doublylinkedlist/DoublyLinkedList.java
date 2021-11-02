@@ -26,6 +26,12 @@ public class DoublyLinkedList {
     }
 
     //Complexity: O(1)
+    public void addFirst(String element) {
+        Node toAdd = new Node(element);
+        linkFirst(toAdd);
+    }
+
+    //Complexity: O(1)
     public void add(String element) {
         Node toAdd = new Node(element);
         linkLast(toAdd);

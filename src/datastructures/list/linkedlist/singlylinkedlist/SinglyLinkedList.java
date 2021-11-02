@@ -23,6 +23,11 @@ public class SinglyLinkedList {
         return nodeAt(index).getElement();
     }
 
+    //Complexity: O(1)
+    public void addFirst(String element) {
+        linkFirst(new Node(element));
+    }
+
     //Complexity: O(n)
     public void add(String element) {
         Node node = new Node(element);

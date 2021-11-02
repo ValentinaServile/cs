@@ -26,6 +26,11 @@ public class ArrayList {
         return backingArray[index];
     }
 
+    //Complexity: O(n)
+    public void addFirst(String element) {
+        add(element, 0);
+    }
+
     //Complexity: O(1)
     public void add(String element) {
         if (nextEmptyIndex == backingArray.length) {
