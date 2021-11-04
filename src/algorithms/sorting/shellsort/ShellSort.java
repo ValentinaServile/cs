@@ -18,15 +18,11 @@ public class ShellSort {
 
                 Integer elementToInsert = input[firstUnsortedIndex];
 
-                int currentIndex;
+                int currentIndex = firstUnsortedIndex;
 
-                for (currentIndex = firstUnsortedIndex; currentIndex - gap >= 0; currentIndex -= gap) {
-
-                    if (elementToInsert <= input[currentIndex - gap]) {
-                        input[currentIndex] = input[currentIndex - gap];
-                    } else {
-                        break;
-                    }
+                while (currentIndex - gap >= 0 && elementToInsert <= input[currentIndex - gap]) {
+                    input[currentIndex] = input[currentIndex - gap];
+                    currentIndex -= gap;
                 }
 
                 input[currentIndex] = elementToInsert;

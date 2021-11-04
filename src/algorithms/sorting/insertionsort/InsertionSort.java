@@ -9,15 +9,11 @@ public class InsertionSort {
 
             Integer elementToInsert = input[firstUnsortedIndex];
 
-            int currentIndex;
+            int currentIndex = firstUnsortedIndex;
 
-            for (currentIndex = firstUnsortedIndex; currentIndex > 0;  currentIndex--) {
-
-                if (elementToInsert <= input[currentIndex - 1]) {
-                    input[currentIndex] = input[currentIndex - 1];
-                } else {
-                    break;
-                }
+            while (currentIndex > 0 && elementToInsert <= input[currentIndex - 1]) {
+                input[currentIndex] = input[currentIndex - 1];
+                currentIndex--;
             }
 
             input[currentIndex] = elementToInsert;
