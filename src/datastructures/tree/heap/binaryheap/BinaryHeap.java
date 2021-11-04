@@ -15,6 +15,30 @@ public class BinaryHeap {
         size = 0;
     }
 
+    //O(n)
+    BinaryHeap(ArrayList<Integer> arrayList) {
+        size = arrayList.size();
+        backingArrayList = new ArrayList<>(size);
+        backingHashMap = new HashMap<>();
+
+        for (int i = 0; i < arrayList.size(); i++) {
+            backingArrayList.add(arrayList.get(i));
+            addToBackingHashmap(arrayList.get(i), i);
+        }
+
+        int lastInternalNodeIndex = Math.max(0, (size / 2) - 1);
+
+        for (int i = lastInternalNodeIndex; i >= 0; i--)
+            bubbleDown(i);
+
+    }
+
+    //O(n log(n))
+    BinaryHeap(Collection<Integer> collection) {
+        this();
+        collection.forEach(this::add);
+    }
+
     //Complexity: O(1)
     public Integer peek() {
         return backingArrayList.get(0);
@@ -174,6 +198,10 @@ public class BinaryHeap {
 
     private void removeFromBackingHashmap(Integer element, int index) {
         backingHashMap.get(element).remove(index);
+    }
+
+    public List<Integer> asList() {
+        return backingArrayList.subList(0, size - 1);
     }
 
     @Override

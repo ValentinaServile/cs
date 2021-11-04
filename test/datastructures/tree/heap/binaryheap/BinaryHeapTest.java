@@ -3,6 +3,9 @@ package datastructures.tree.heap.binaryheap;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,10 +13,49 @@ import static org.junit.jupiter.api.Assertions.*;
 class BinaryHeapTest {
 
     @Nested
+    class Constructor {
+
+        @Test
+        void allowsToCreateHeapFromArrayInLinearTimeByHeapifyingOnlyInternalNodes() {
+            ArrayList<Integer> arrayList = new ArrayList<>();
+            arrayList.add(1);
+            arrayList.add(2);
+            arrayList.add(5);
+            arrayList.add(3);
+            arrayList.add(7);
+            arrayList.add(4);
+            arrayList.add(9);
+            arrayList.add(6);
+
+            BinaryHeap heap = new BinaryHeap(arrayList);
+
+            assertTrue(respectsMaxHeapInvariant(heap));
+        }
+
+        @Test
+        void allowsToCreateHeapFromCollectionInNLogNTimeByHeapifyingAllNodes() {
+            Collection<Integer> collection = new ArrayList<>();
+            collection.add(1);
+            collection.add(2);
+            collection.add(5);
+            collection.add(3);
+            collection.add(7);
+            collection.add(4);
+            collection.add(9);
+            collection.add(6);
+
+            BinaryHeap heap = new BinaryHeap(collection);
+
+            assertTrue(respectsMaxHeapInvariant(heap));
+        }
+
+    }
+
+    @Nested
     class Add {
 
         @Test
-        void preservesHeapPropertyByBubblingElementUpIfBiggerThanOthers() {
+        void preservesHeapInvariantByBubblingElementUpIfBiggerThanOthers() {
             BinaryHeap heap = new BinaryHeap();
 
             heap.add(1);
@@ -24,10 +66,12 @@ class BinaryHeapTest {
 
             heap.add(3);
             assertEquals(heap.peek(), 3);
+
+            assertTrue(respectsMaxHeapInvariant(heap));
         }
 
         @Test
-        void preservesHeapPropertyByNotBubblingElementsUpIfSmallerThanOthers() {
+        void preservesHeapInvariantByNotBubblingElementsUpIfSmallerThanOthers() {
             BinaryHeap heap = new BinaryHeap();
 
             heap.add(3);
@@ -35,6 +79,7 @@ class BinaryHeapTest {
             heap.add(2);
 
             assertEquals(heap.peek(), 3);
+            assertTrue(respectsMaxHeapInvariant(heap));
         }
     }
 
@@ -42,7 +87,7 @@ class BinaryHeapTest {
     class Poll {
 
         @Test
-        void returnsCurrentMaxElementAndPreservesHeapPropertyByBubblingUpTheNewMaxElement() {
+        void returnsCurrentMaxElementAndPreservesHeapInvariantByBubblingUpTheNewMaxElement() {
             BinaryHeap heap = new BinaryHeap();
 
             heap.add(3);
@@ -59,6 +104,8 @@ class BinaryHeapTest {
             Integer newMaximum = heap.poll();
             assertEquals(newMaximum, 4);
             assertEquals(heap.peek(), 3);
+
+            assertTrue(respectsMaxHeapInvariant(heap));
         }
     }
 
@@ -80,7 +127,7 @@ class BinaryHeapTest {
         }
 
         @Test
-        void preservesHeapPropertyByBubblingUpNewMaxElement() {
+        void preservesHeapInvariantByBubblingUpNewMaxElement() {
             BinaryHeap heap = new BinaryHeap();
 
             heap.add(3);
@@ -95,6 +142,7 @@ class BinaryHeapTest {
 
             heap.remove(4);
             assertEquals(heap.peek(), 3);
+            assertTrue(respectsMaxHeapInvariant(heap));
         }
     }
 
@@ -130,4 +178,24 @@ class BinaryHeapTest {
         }
     }
 
+
+    private boolean respectsMaxHeapInvariant(BinaryHeap heap) {
+        return respectsMaxHeapInvariant(0, heap.asList());
+    }
+
+    private boolean respectsMaxHeapInvariant(int nodeIndex, List<Integer> heapifiedNodes) {
+        if (nodeIndex >= heapifiedNodes.size())
+            return true;
+
+        int leftChildIndex = nodeIndex * 2 + 1;
+        int rightChildIndex = nodeIndex * 2 + 2;
+
+        if (leftChildIndex < heapifiedNodes.size() && heapifiedNodes.get(leftChildIndex) >  heapifiedNodes.get(nodeIndex) )
+            return false;
+
+        if (rightChildIndex < heapifiedNodes.size() && heapifiedNodes.get(rightChildIndex) >  heapifiedNodes.get(nodeIndex) )
+            return false;
+
+        return respectsMaxHeapInvariant(leftChildIndex, heapifiedNodes) && respectsMaxHeapInvariant(rightChildIndex, heapifiedNodes);
+    }
 }
