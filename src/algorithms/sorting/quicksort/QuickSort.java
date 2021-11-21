@@ -1,8 +1,5 @@
 package algorithms.sorting.quicksort;
 
-import java.math.BigInteger;
-import java.util.List;
-
 public class QuickSort {
 
     //Complexity: O(n log(n))
@@ -25,21 +22,19 @@ public class QuickSort {
     private int partition(Integer[] input, int startIndex, int endIndex) {
         Integer pivot = input[endIndex];
 
-        int leftIndex = startIndex - 1;
-        int rightIndex = startIndex;
+        int lastElementSmallerThanPivotIndex = startIndex - 1;
 
-        while (rightIndex <= endIndex - 1) {
+        for (int i = startIndex; i <= endIndex - 1; i++) {
 
-            if (input[rightIndex] < pivot) {
-                leftIndex++;
-                swap(input, rightIndex, leftIndex);
+            if (input[i] < pivot) {
+                lastElementSmallerThanPivotIndex++;
+                swap(input, i, lastElementSmallerThanPivotIndex);
             }
 
-            rightIndex++;
         }
 
-        swap(input, leftIndex + 1, endIndex);
-        return leftIndex + 1;
+        swap(input, lastElementSmallerThanPivotIndex + 1, endIndex);
+        return lastElementSmallerThanPivotIndex + 1;
     }
 
 
