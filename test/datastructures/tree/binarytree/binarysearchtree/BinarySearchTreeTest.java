@@ -338,6 +338,43 @@ class BinarySearchTreeTest {
             }
         }
 
+        @Nested
+        class LevelOrder {
+
+            @Test
+            void allowsToTraverseNodesByLayer() {
+                BinarySearchTree tree = new BinarySearchTree();
+
+                tree.insert(9);
+                tree.insert(6);
+                tree.insert(10);
+                tree.insert(7);
+                tree.insert(18);
+                tree.insert(5);
+                tree.insert(8);
+                tree.insert(11);
+
+
+                List<Integer> nodesInOrder = new ArrayList<>();
+                tree.traverseLevelOrder(nodesInOrder::add);
+
+                assertEquals(nodesInOrder.size(), 8);
+
+                assertEquals(nodesInOrder.get(0), 9);
+
+                assertEquals(nodesInOrder.get(1), 6);
+                assertEquals(nodesInOrder.get(2), 10);
+
+                assertEquals(nodesInOrder.get(3), 5);
+                assertEquals(nodesInOrder.get(4), 7);
+                assertEquals(nodesInOrder.get(5), 18);
+
+                assertEquals(nodesInOrder.get(6), 8);
+                assertEquals(nodesInOrder.get(7), 11);
+            }
+
+        }
+
     }
 
 }

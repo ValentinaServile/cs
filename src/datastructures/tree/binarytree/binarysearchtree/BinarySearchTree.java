@@ -1,13 +1,16 @@
 package datastructures.tree.binarytree.binarysearchtree;
 
+import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.Queue;
 import java.util.function.Consumer;
 
 public class BinarySearchTree {
 
     private Node root;
 
+    //Complexity: O(log(n))
     public void insert(Integer element) {
         if (root == null) {
             root = new Node(element);
@@ -16,6 +19,7 @@ public class BinarySearchTree {
         }
     }
 
+    //Complexity: O(log(n))
     public Integer search(Integer element) {
         Node result = root.search(element);
 
@@ -26,6 +30,7 @@ public class BinarySearchTree {
         return result.value;
     }
 
+    //Complexity: O(log(n))
     public void remove(Integer element) {
         if (root == null) {
             return;
@@ -39,6 +44,7 @@ public class BinarySearchTree {
         root.remove(element, null);
     }
 
+    //Complexity: O(n)
     public void traversePreOrder(Consumer<Integer> callback) {
         if (root == null) {
             return;
@@ -47,6 +53,7 @@ public class BinarySearchTree {
         root.traversePreOrder(callback);
     }
 
+    //Complexity: O(n)
     public void traverseInOrder(Consumer<Integer> callback) {
         if (root == null) {
             return;
@@ -55,13 +62,34 @@ public class BinarySearchTree {
         root.traverseInOrder(callback);
     }
 
-
+    //Complexity: O(n)
     public void traversePostOrder(Consumer<Integer> callback) {
         if (root == null) {
             return;
         }
 
         root.traversePostOrder(callback);
+    }
+
+    //Complexity: O(n)
+    public void traverseLevelOrder(Consumer<Integer> callback) {
+        if (root == null) {
+            return;
+        }
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node nodeToProcess = queue.remove();
+            callback.accept(nodeToProcess.getValue());
+            if (nodeToProcess.hasLeftChild()) {
+                queue.add(nodeToProcess.getLeftChild());
+            }
+            if (nodeToProcess.hasRightChild()) {
+                queue.add(nodeToProcess.getRightChild());
+            }
+        }
     }
 
     private static class Node {
@@ -82,8 +110,16 @@ public class BinarySearchTree {
             return leftChild;
         }
 
+        public boolean hasLeftChild() {
+            return leftChild != null;
+        }
+
         public Node getRightChild() {
-            return leftChild;
+            return rightChild;
+        }
+
+        public boolean hasRightChild() {
+            return rightChild != null;
         }
 
         public Node search(Integer value) {
