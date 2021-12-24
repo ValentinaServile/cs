@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SeparateChainingHashTableTest {
-
+    
     @Test
     void allowsInsertingMultipleElements() {
         SeparateChainingHashTable hashTable = new SeparateChainingHashTable();
@@ -19,6 +19,26 @@ class SeparateChainingHashTableTest {
         assertEquals(hashTable.get("key1"), "apples");
         assertEquals(hashTable.get("key2"), "pears");
         assertEquals(hashTable.get("key3"), "oranges");
+    }
+
+    @Test
+    void capacityWillExpandWhenGoingOverMaxLoadFactor() {
+        SeparateChainingHashTable hashTable = new SeparateChainingHashTable(2, 0.75);
+        hashTable.insert("key1", "apples");
+        hashTable.insert("key2", "pears");
+        hashTable.insert("key3", "oranges");
+        hashTable.insert("key4", "bananas");
+        hashTable.insert("key5", "mangoes");
+        hashTable.insert("key6", "cherries");
+
+        assertEquals(hashTable.size(), 6);
+        assertEquals(hashTable.get("key1"), "apples");
+        assertEquals(hashTable.get("key2"), "pears");
+        assertEquals(hashTable.get("key3"), "oranges");
+        assertEquals(hashTable.get("key4"), "bananas");
+        assertEquals(hashTable.get("key5"), "mangoes");
+        assertEquals(hashTable.get("key6"), "cherries");
+
     }
 
     @Test
