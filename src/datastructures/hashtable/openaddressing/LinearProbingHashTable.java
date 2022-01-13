@@ -31,7 +31,7 @@ public class LinearProbingHashTable {
             probingSteps++;
         }
 
-        if (backingArray[index] == null) {
+        if (backingArray[index] == null || backingArray[index].deleted) {
             size++;
         }
 
@@ -70,6 +70,7 @@ public class LinearProbingHashTable {
         }
 
         backingArray[index].deleted = true;
+        size--;
     }
 
     //Complexity: O(1)
