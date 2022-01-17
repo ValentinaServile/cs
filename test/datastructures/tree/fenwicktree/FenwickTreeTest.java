@@ -33,4 +33,14 @@ class FenwickTreeTest {
 
         assertEquals(41, result);
     }
+
+    @Test
+    void shouldUpdateValueAtIndexAdjustingOtherValuesInTheTree() {
+        FenwickTree fenwickTree = new FenwickTree(new int[]{5, 7, 9, 12, -1, 7, 2, -4});
+        fenwickTree.update(5, 4);
+
+        Integer result = fenwickTree.prefixSum(5);
+
+        assertEquals(36, result);
+    }
 }

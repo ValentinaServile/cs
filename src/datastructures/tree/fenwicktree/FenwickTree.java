@@ -21,6 +21,13 @@ public class FenwickTree {
     }
 
     //Complexity: O(log(n))
+    public void update(int index, int value) {
+        int difference = value - rangeQuery(index, index);
+
+        addToIndex(index, difference);
+    }
+
+    //Complexity: O(log(n))
     public void addToIndex(int index, int value) {
         int backingArrayIndex = index + 1;
 
@@ -60,5 +67,4 @@ public class FenwickTree {
     private int leastSignificantBitOf(int index) {
         return index & -index; // Returns the value of the least significant bit which is set to 1
     }
-
 }
