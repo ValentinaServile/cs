@@ -5,7 +5,7 @@ import java.util.List;
 
 public class HowSumTabulated {
 
-    //Complexity: O(possibleFactors.length * n)
+    //Complexity: O(possibleFactors.length^2 * n)
     public static List<Integer> forNumber(Integer n, List<Integer> possibleFactors) {
         List<Integer>[] table = new List[n + 1];
 

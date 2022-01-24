@@ -6,7 +6,7 @@ import java.util.List;
 
 public class HowAllSumMemoized {
 
-    //Complexity: O(possibleFactors.length*n)
+    //Complexity: O(n^possibleFactors.length)
     public static List<List<Integer>> forNumber(Integer n, List<Integer> possibleFactors) {
         return forNumber(n, possibleFactors, new HashMap<>());
     }

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class HowAllSum {
 
-    //Complexity: O(possibleFactors.length^n)
+    //Complexity: O(n^possibleFactors.length)
     public static List<List<Integer>> forNumber(Integer n, List<Integer> possibleFactors) {
         if (n < 0) return null;
         if (n == 0) {

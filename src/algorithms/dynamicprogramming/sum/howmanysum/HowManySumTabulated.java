@@ -4,7 +4,7 @@ import java.util.List;
 
 public class HowManySumTabulated {
 
-    //Complexity: O(possibleFactors.length^2 * n)
+    //Complexity: O(possibleFactors.length * n)
     public static Integer forNumber(Integer n, List<Integer> possibleFactors) {
         int[] table = new int[n + 1];
 

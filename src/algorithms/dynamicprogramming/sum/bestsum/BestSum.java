@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BestSum {
 
-    //Complexity: O(possibleFactors.length^n * possibleFactors.length)
+    //Complexity: O(n^possibleFactors.length * possibleFactors.length)
     public static List<Integer> forNumber(Integer n, List<Integer> possibleFactors) {
         if (n < 0) return null;
         if (n == 0) return new ArrayList<>();

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class HowManySum {
 
-    //Complexity: O(possibleFactors.length^n)
+    //Complexity: O(n^possibleFactors.length * n)
     public static Integer forNumber(Integer n, List<Integer> possibleFactors) {
         if (n < 0) return 0;
         if (n == 0) return 1;
