@@ -1,19 +1,39 @@
 package datastructures.suffixarray;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class SuffixArray {
 
     private final Integer[] suffixArray;
     private final Integer[] lcpArray;
     private final String text;
+    private final List<TextColor> colorsInText;
 
     public SuffixArray(String text) {
+        colorsInText = List.of(new TextColor(0, text.length(), Color.RED));
         suffixArray = buildSuffixArrayFrom(text);
         lcpArray = buildLcpArrayFrom(text, suffixArray);
         this.text = text;
+    }
+
+    public SuffixArray(String ...words) {
+        colorsInText = new ArrayList<>();
+        int lastIndex = 0;
+
+        StringBuilder textBuilder = new StringBuilder();
+        for (int i = 0; i < words.length; i++) {
+            Color currentColor = Color.values()[i];
+
+            textBuilder.append(words[i]);
+            textBuilder.append(currentColor.suffix);
+            colorsInText.add(new TextColor(lastIndex, lastIndex + words[i].length(), currentColor));
+            lastIndex += words[i].length() + 1;
+        }
+
+        this.text = textBuilder.toString();
+
+        suffixArray = buildSuffixArrayFrom(text);
+        lcpArray = buildLcpArrayFrom(text, suffixArray);
     }
 
     //Complexity: O(n^2 log(n))
@@ -104,8 +124,123 @@ public class SuffixArray {
         return text.substring(suffixArray[maxLcpIndex], maxLcpValue);
     }
 
-    public List<String> longestCommonSubstrings() {
-        throw new UnsupportedOperationException("todo");
+    //O(n1 + n2 + ... nm)
+    public List<String> longestCommonSubstringsAmong(int numberOfStrings) {
+        List<String> result = new ArrayList<>();
+        int longestFoundSubstringLength = 0;
+
+        SlidingWindowMinimum window = new SlidingWindowMinimum(lcpArray);
+
+        while (window.highBound < text.length()) {
+            if (numberOfColorsInWindow(window.lowBound, window.highBound) < numberOfStrings) {
+                window.advance();
+                continue;
+            }
+
+            window.shrink();
+
+            String shortestCommonSuffix = suffixFrom(window.getIndexOfCurrentMinimum(), window.getCurrentMinimum());
+
+            if (shortestCommonSuffix.length() > longestFoundSubstringLength) {
+                result = new ArrayList<>();
+                result.add(shortestCommonSuffix);
+                longestFoundSubstringLength = shortestCommonSuffix.length();
+            } else if (shortestCommonSuffix.length() == longestFoundSubstringLength) {
+                result.add(shortestCommonSuffix);
+            }
+
+        }
+
+        return result;
     }
 
+    private String suffixFrom(Integer indexInSuffixArray, Integer length) {
+        Integer startIndex = suffixArray[indexInSuffixArray];
+        return text.substring(startIndex, startIndex + length);
+    }
+
+    private int numberOfColorsInWindow(int windowStartIndex, int windowEndIndex) {
+        Set<Color> colorsInWindow = new HashSet<>();
+
+        for (int i = windowStartIndex; i < windowEndIndex; i++) {
+            Integer currentSuffixIndex = suffixArray[i];
+            colorsInWindow.add(colorOf(currentSuffixIndex));
+        }
+
+        return colorsInWindow.size();
+    }
+
+    private Color colorOf(Integer suffixStartIndex) {
+        for (TextColor textColor: colorsInText) {
+            if (textColor.startIndex <= suffixStartIndex  && textColor.endIndex >= suffixStartIndex) {
+                return textColor.color;
+            }
+        }
+
+        throw new RuntimeException("Text color not found for suffix at: " + suffixStartIndex);
+    }
+
+    private enum Color {
+        RED("#"),
+        BLUE("$"),
+        GREEN("%"),
+        YELLOW("@"),
+        WHITE("^"),
+        BLACK("+");
+
+        private final String suffix;
+
+        Color(String suffix) {
+            this.suffix = suffix;
+        }
+    }
+
+    private static class TextColor {
+        private final Color color;
+        private final int startIndex;
+        private final int endIndex;
+
+        public TextColor(int startIndex, int endIndex, Color color) {
+            this.startIndex = startIndex;
+            this.endIndex = endIndex;
+            this.color = color;
+        }
+    }
+
+    private static class SlidingWindowMinimum {
+        Integer[] values;
+        int lowBound, highBound;
+
+        Deque<Integer> deque = new ArrayDeque<>();
+
+        public SlidingWindowMinimum(Integer[] values) {
+            if (values == null) throw new IllegalArgumentException();
+            this.values = values;
+        }
+
+        public void advance() {
+            while (!deque.isEmpty() && values[deque.peekLast()] > values[highBound])
+                deque.removeLast();
+
+            deque.addLast(highBound);
+
+            highBound++;
+        }
+
+        public void shrink() {
+            lowBound++;
+            while (!deque.isEmpty() && deque.peekFirst() < lowBound)
+                deque.removeFirst();
+        }
+
+        // Complexity: O(1)
+        public Integer getCurrentMinimum() {
+            return values[deque.peekFirst()];
+        }
+
+        // Complexity: O(1)
+        public Integer getIndexOfCurrentMinimum() {
+            return deque.peekFirst();
+        }
+    }
 }

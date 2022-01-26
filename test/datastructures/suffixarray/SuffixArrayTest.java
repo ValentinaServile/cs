@@ -30,4 +30,15 @@ class SuffixArrayTest {
 
         assertEquals("abra", result);
     }
+
+    @Test
+    void shouldFindLongestCommonSubstrings() {
+        SuffixArray suffixArray = new SuffixArray("aabc", "bcdc", "bcde","cded");
+
+        List<String> result = suffixArray.longestCommonSubstringsAmong(2);
+
+        assertEquals(2, result.size());
+        assertEquals("bcd", result.get(0));
+        assertEquals("cde", result.get(1));
+    }
 }
